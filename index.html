@@ -57,7 +57,7 @@ function playRound(playerSelection, computerSelection){ //take player and comput
 }
 
 
-
+// the main game function
 function game(){
 
 let playerScore = 0;
@@ -65,7 +65,7 @@ let computerScore = 0;
 
 alert("Play Rock, Paper, Scissor! Best of 5 wins!");
 
-for(var i = 0; i < 5; i++){
+for(var i = 0; i < 5; i++){ //play 5 rounds
         let playerSelection = prompt('choose rock, paper or scissors:').toLowerCase();
         if (playerSelection == "rock"){
         playerSelection = 0; //rock
@@ -92,7 +92,7 @@ for(var i = 0; i < 5; i++){
         }
 
     }
-    console.log("You: " + playerScore + " Computer: " + computerScore);
+    alert("You: " + playerScore + " Computer: " + computerScore);
 }
 
 game();
