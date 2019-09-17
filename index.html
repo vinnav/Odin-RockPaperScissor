@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissor</title>
+</head>
+<body>
+  
+<script>
+
+function computerPlay(){        //return randomly rock, paper or scissor
+    let choice = Math.floor(Math.random() * (3));
+    if (choice == 0){
+        return 0; //rock
+    } else if (choice == 1){
+        return 1; // paper
+    } else {
+        return 2; //scissor
+    }
+}
+
+function playerPlay(){
+   let choice = window.prompt("Choose rock, paper or scissor:");
+   choice = choice.toLowerCase();
+   if (choice == "rock"){
+        return 0; //rock
+    } else if (choice == "paper"){
+        return 1; // paper
+    } else if (choice == "scissor"){
+        return 2; //scissor
+    } else {
+        return 3; //invalid selection
+    }
+
+}
+
+
+function playRound(playerSelection, computerSelection){ //take player and computer choice and declares winner
+    if (playerSelection == computerSelection){ // same choice
+        return "draw";
+    } else if(playerSelection == 0 && computerSelection == 1){ // player rock, pc paper
+        return "lose";
+    } else if(playerSelection == 0 && computerSelection == 2){ // player rock, pc scissor
+        return "win";
+    } else if(playerSelection == 1 && computerSelection == 0){ // player paper, pc rock
+        return "win";
+    } else if(playerSelection == 1 && computerSelection == 2){ // player paper, pc scissor
+        return "lose";
+    } else if(playerSelection == 2 && computerSelection == 0){ // player scissor, pc rock
+        return "lose";
+    } else if(playerSelection == 2 && computerSelection == 1){ // player scissor, pc paper
+        return "win";
+    } else {
+        return "invalid";
+    }
+}
+
+
+
+function game(){
+
+let playerScore = 0;
+let computerScore = 0;
+
+alert("Play Rock, Paper, Scissor! Best of 5 wins!");
+
+for(var i = 0; i < 5; i++){
+        let playerSelection = prompt('choose rock, paper or scissors:').toLowerCase();
+        if (playerSelection == "rock"){
+        playerSelection = 0; //rock
+        } else if (playerSelection == "paper"){
+        playerSelection = 1; // paper
+        } else if (playerSelection == "scissor"){
+        playerSelection = 2; //scissor
+        } else {
+        playerSelection = 3; //invalid selection
+        }   
+        const computerSelection = computerPlay();
+        
+        if(playRound(playerSelection, computerSelection) == "draw"){
+            console.log("It's a draw!")
+        } else if(playRound(playerSelection, computerSelection) == "win"){
+            console.log("You Win!")
+            playerScore++;
+        } else if(playRound(playerSelection, computerSelection) == "lose"){
+            computerScore++;
+            console.log("You Lose!")
+        } else if(playRound(playerSelection, computerSelection) == "invalid"){
+            console.log("Invalid choice!! Try again")
+            i--;
+        }
+
+    }
+    console.log("You: " + playerScore + " Computer: " + computerScore);
+}
+
+game();
+
+
+
+</script>
+</body>
+</html>
